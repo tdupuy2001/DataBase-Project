@@ -28,4 +28,4 @@ DROP EVENT IF EXISTS Check_availability;
 CREATE EVENT Check_availability
 ON SCHEDULE EVERY 10 SECOND
 DO
-	CALL Check_books_available()
+	CALL Check_books_available();
