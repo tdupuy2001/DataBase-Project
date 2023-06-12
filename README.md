@@ -47,10 +47,11 @@ Landing for teachers and students
 
 
 Landing for operator
-![landing for operator]()
+![landing for operator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/1678ec30-d56f-4cd0-907a-da7141a949b3)
 
 
 Landing for administrator
 ![landing for administrator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/67600e67-7ccb-4b9d-8d76-4f6686441e25)
+
 
 
