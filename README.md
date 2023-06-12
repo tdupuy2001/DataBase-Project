@@ -31,17 +31,17 @@ All HTML templates are stored together in the `templates` folder.
 
 The file `run.py` launches the simple, built-in server and runs the app on it.
 
-All the project is linked with the database contained is the `database` folder. You can create it running the DDL file (for the database structure) on MySQL. You also must create views, procedures,triggers and events (in this order) on MySQL (all the files are contained in the `database` folder).
+All the project is linked with the database contained is the `database` folder. You can create it running the DDL file (for the database structure) on MySQL. You also must create views, procedures,triggers and events (in this order) on MySQL (all the files are contained in the `database` folder). The queries file contains all the queries of the project (queries at the end of the wording that are graded) but we also added other queries in the python files of the front-end to look like, as much as possible, a real Lbrary website.
 
 Finally, you can populate the database using the DML file (the data have been created thanks to the python files contained in the `dummy_data` folder).
 
 
 ## Screenshots
 
-![global landing](https://user-images.githubusercontent.com/40044042/156389573-9e6c1c3a-1488-4e39-913f-96dd11091adb.png)
+![global landing](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/f7efc794-a2b0-4f04-b589-e58cdfd020c2)
 
-![landing for teachers and students](https://user-images.githubusercontent.com/40044042/156389596-a409b129-e9cb-4946-9d9d-47f113c1d8f3.png)
+![landing for teachers and students](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/6323f583-82e4-4557-92b4-31962325fb17)
 
-![landing for operators](https://user-images.githubusercontent.com/40044042/156389628-1653aba7-c033-48d0-ac3a-df37374f0d1e.png)
+![landing for operators](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/67600e67-7ccb-4b9d-8d76-4f6686441e25)
 
 ![landing for administrator](https://user-images.githubusercontent.com/40044042/156389628-1653aba7-c033-48d0-ac3a-df37374f0d1e.png)
