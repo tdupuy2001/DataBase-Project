@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 ## configuration of database
 
-app.config["MYSQL_USER"] = 'root'
-app.config["MYSQL_PASSWORD"] = 'wetmy0-robjyt-Gamqur'
+app.config["MYSQL_USER"] = ''
+app.config["MYSQL_PASSWORD"] = ''
 app.config["MYSQL_DB"] = 'base'
-app.config["MYSQL_HOST"] = 'localhost'
-app.config["SECRET_KEY"] = 'key' 
-app.config["WTF_CSRF_SECRET_KEY"] = 'key' 
+app.config["MYSQL_HOST"] = ''
+app.config["SECRET_KEY"] = '' 
+app.config["WTF_CSRF_SECRET_KEY"] = '' 
 
 ## initialize database connection object
 db = MySQL(app)
