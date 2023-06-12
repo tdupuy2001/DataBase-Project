@@ -41,8 +41,16 @@ Finally, you can populate the database using the DML file (the data have been cr
 Global landing
 ![global landing](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/f7efc794-a2b0-4f04-b589-e58cdfd020c2)
 
+
+Landing for teachers and students
 ![landing for teachers and students](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/6323f583-82e4-4557-92b4-31962325fb17)
 
-![landing for operators](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/67600e67-7ccb-4b9d-8d76-4f6686441e25)
 
-![landing for administrator](https://user-images.githubusercontent.com/40044042/156389628-1653aba7-c033-48d0-ac3a-df37374f0d1e.png)
+Landing for operator
+![landing for operator]()
+
+
+Landing for administrator
+![landing for administrator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/67600e67-7ccb-4b9d-8d76-4f6686441e25)
+
+
