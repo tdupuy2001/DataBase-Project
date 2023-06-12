@@ -38,6 +38,7 @@ Finally, you can populate the database using the DML file (the data have been cr
 
 ## Screenshots
 
+Global landing
 ![global landing](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/f7efc794-a2b0-4f04-b589-e58cdfd020c2)
 
 ![landing for teachers and students](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/6323f583-82e4-4557-92b4-31962325fb17)
