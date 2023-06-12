@@ -1,0 +1,137 @@
+{% extends 'global_layout_user.html' %}
+
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <div class="text-center", id="title_profile">
+                Personnal Data
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <td>First name</td>
+                    <td>{{ account['first_name'] }}</td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td>{{ account['last_name'] }}</td>
+                </tr>
+                <tr>
+                    <td>Birth date</td>
+                    <td>{{ account['birth_date'] }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ account['email'] }}
+                        <a href="/teacher/profile/changemail" class="btn btn-primary btn-password " role="button" aria-pressed="true">Change mail</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>{{ account['username'] }}</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>{{ account['password'] }}
+                        <a href="/teacher/profile/changepassword" class="btn btn-primary btn-password"  role="button" aria-pressed="true">Change password</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>School</td>
+                    <td>{{ account['school'] }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" id="row2">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                Books Borrowed
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Start date</th>
+                        <th scope="col">Return Date</th>
+                    <tr>
+                </thead>
+                <tbody>
+                    {% for row in res %}
+                    <tr>
+                        <td> {{ row.ISBN }} </td>
+                        <td> {{ row.title }} </td>
+                        <td> {{ row.author_name }} </td>
+                        <td> {{ row.category }} </td>
+                        <td> {{ row.start_date }} </td>
+                        <td> {{ row.end_date }} </td>
+                        <td>
+                            <a type="button" onclick="setReviewFields(this)"
+                            data-toggle="modal" data-ISBN="{{ row.ISBN }}" data-bs-toggle = "modal"
+                            data-bs-target="#reviewModal">
+                                <i class="fa fa-pencil">Review</i>
+                            </a>
+                        </td>
+                    </tr>  
+                    {% endfor %}
+                </tbody>  
+            </table>
+        </div>
+    </div>
+</div>
+<div id="reviewModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Review</h4>
+            </div>
+            <div class="modal-body">
+                <form id="modal-form">
+                    {{ form.hidden_tag() }}
+                    <div style="text-align: center;">
+                        {{ form.grade.label(class = "form-label") }}
+                        {{ form.grade(id = "grade", required = False) }}
+                    </div>
+                    <div style="text-align: center;">
+                        {{ form.review.label(class = "form-label") }}
+                        {{ form.review(id = "review", required = False) }}
+                    </div>
+                    <div>
+                        {% if form.grade.errors %}
+                        <ul class = "errors">
+                            {% for error in form.grade.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.review.errors %}
+                        <ul class = "errors">
+                            {% for error in form.review.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {{ form.submit(class = "btn btn btn-success", form = "modal-form", value = "Post") }}
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function setReviewFields(row) {
+        document.getElementById("modal-form").action = "/teacher/profile/review/" + row.getAttribute("data-ISBN");
+        document.getElementById("modal-form").method = "POST";
+    }
+</script>
+
+{% endblock content %}

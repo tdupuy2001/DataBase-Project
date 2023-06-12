@@ -1,0 +1,100 @@
+{% extends "global_layout_operator.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">User id</th>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Request date</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Books already reserved</th>
+                        <th scope="col">Books already borrowed</th>
+                        <th scope="col">Books delayed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.id_user }} </td>
+                    <td> {{ row.ISBN }} </td>
+                    <td> {{ row.start_date }} </td>
+                    <td> {{ row.role }} </td>
+                    <td> {{ row.Books_already_reserved }} </td>
+                    <td> {{ row.Books_already_borrowed }} </td>
+                    <td> {{ row.Books_delayed }} </td>
+                    <td>
+                        <button style = "all: unset; cursor: pointer;" type = "button" data-bs-toggle = "modal" data-bs-target = "#approvedModal" data-ISBN = "{{ row.ISBN }}" data-id_user = "{{ row.id_user }}" onclick = "setApprovedModalFields(this)">
+                            <i class = "fa fa-check" ></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button style = "all: unset; cursor: pointer;" type = "button" data-bs-toggle = "modal" data-bs-target = "#rejectModal" data-ISBN = "{{ row.ISBN }}" data-id_user = "{{ row.id_user }}" onclick = "setRejectedModalFields(this)">
+                            <i class = "fa fa-close" ></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class = "modal fade" id="approvedModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "reserveModalLabel">Approve ?</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                You will approve this borrow. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "approved-modal-form">
+                    <input type = "submit" class = "btn btn-success" value = "Validate">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "modal fade" id="rejectModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "reserveModalLabel">Reject ?</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                You will reject this borrow. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "rejected-modal-form">
+                    <input type = "submit" class = "btn btn-success" value = "Reject">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function setApprovedModalFields(row) {
+        document.getElementById("approved-modal-form").action = "/operator/borrow/accept/" +row.getAttribute("data-id_user")+"/"+row.getAttribute("data-ISBN");
+        document.getElementById("approved-modal-form").method = "POST";
+    }
+    function setRejectedModalFields(row) {
+        document.getElementById("rejected-modal-form").action = "/operator/borrow/reject/" +row.getAttribute("data-id_user")+"/"+row.getAttribute("data-ISBN");
+        document.getElementById("rejected-modal-form").method = "POST";
+    }
+</script>
+{% endblock content %}

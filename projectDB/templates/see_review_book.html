@@ -1,0 +1,31 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in res %}
+                    <tr>
+                        <td> {{ row.grade }} </td>
+                        <td> {{ row.comment }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

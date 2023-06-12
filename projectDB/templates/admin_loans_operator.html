@@ -1,0 +1,55 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row3">
+        <div class="col-md-12">
+            <form class="form-inline" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <div class="form-group col-sm-2 mb-3">
+                        {{ form.year(class = "form-control", placeholder = "Enter year") }}
+                        {% if form.year.errors %}
+                        <ul class = "errors">
+                            {% for error in form.year.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col">
+                        {{ form.submit(class = "btn btn-primary btn-search") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="row2">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Operator ID</th>
+                        <th scope="col">Operator name</th>
+                        <th scope="col">Number of books loaned</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.id_operator }} </td>
+                    <td> {{ row.operator_name }} </td>
+                    <td> {{ row.books_loaned }} </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

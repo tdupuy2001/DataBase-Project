@@ -1,0 +1,74 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row3">
+        <div class="col-md-12">
+            <form class="form-inline" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <div class="form-group col-sm-2 mb-3">
+                        {{ form.category(class = "form-control", placeholder = "Enter category") }}
+                        {% if form.category.errors %}
+                        <ul class = "errors">
+                            {% for error in form.category.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col">
+                        {{ form.submit(class = "btn btn-primary btn-search") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="row2">
+        <div class="col-md-12">
+            <div class="input-group">
+                <div class="col-sm-6">
+                    <div class="text", id="title_book2">
+                        {{title1}}
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Author name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in res1 %}
+                        <tr>
+                            <td> {{ row.authors_names }} </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>   
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text", id="title_book2">
+                        {{title2}}
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Teacher name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in res2 %}
+                        <tr>
+                            <td> {{ row.teachers_names }} </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>   
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,130 @@
+{% extends "global_layout_operator.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row3">
+        <div class="col-md-12">
+            <form class="form-inline" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.first_name(class = "form-control", placeholder = "Enter first name") }}
+                        {% if form.first_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.first_name.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.last_name(class = "form-control", placeholder = "Enter last name") }}
+                        {% if form.last_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.last_name.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col">
+                        {{ form.submit(class = "btn btn-primary btn-search") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">User id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Birth date</th>
+                        <th scope="col">Approved</th>
+                        <th scope="col">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.id_user }} </td>
+                    <td> {{ row.name }} </td>
+                    <td> {{ row.username }} </td>
+                    <td> {{ row.date }} </td>
+                    <td> {{ row.approved }} </td>
+                    <td> {{ row.role}} </td>
+                    <td>
+                        <button style = "all: unset; cursor: pointer;" type = "button" data-bs-toggle = "modal" data-bs-target = "#approvedModal" data-id_user = "{{ row.id_user }}" onclick = "setApprovedModalFields(this)">
+                            <i class = "fa fa-check" ></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button style = "all: unset; cursor: pointer;" type = "button" data-bs-toggle = "modal" data-bs-target = "#rejectModal" data-id_user = "{{ row.id_user }}" onclick = "setRejectedModalFields(this)">
+                            <i class = "fa fa-close" ></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class = "modal fade" id="approvedModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "reserveModalLabel">Approve ?</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                You will approve this user. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "approved-modal-form">
+                    <input type = "submit" class = "btn btn-success" value = "Validate">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "modal fade" id="rejectModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "reserveModalLabel">Disapprove ?</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                You will disapprove this user. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "rejected-modal-form">
+                    <input type = "submit" class = "btn btn-success" value = "Reject">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function setApprovedModalFields(row) {
+        document.getElementById("approved-modal-form").action = "/operator/users/accept/" +row.getAttribute("data-id_user");
+        document.getElementById("approved-modal-form").method = "POST";
+    }
+    function setRejectedModalFields(row) {
+        document.getElementById("rejected-modal-form").action = "/operator/users/reject/" +row.getAttribute("data-id_user");
+        document.getElementById("rejected-modal-form").method = "POST";
+    }
+</script>
+{% endblock content %}

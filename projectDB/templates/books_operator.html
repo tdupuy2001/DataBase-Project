@@ -1,0 +1,94 @@
+{% extends "global_layout_operator.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row3">
+        <div class="col-md-12">
+            <form class="form-inline" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <div class="form-group col-sm-2 mb-3">
+                        {{ form.title(class = "form-control", placeholder = "Enter title") }}
+                        {% if form.title.errors %}
+                        <ul class = "errors">
+                            {% for error in form.title.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-2 mb-3">
+                        {{ form.category(class = "form-control", placeholder = "Enter category") }}
+                        {% if form.category.errors %}
+                        <ul class = "errors">
+                            {% for error in form.category.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-2 mb-3">
+                        {{ form.author(class = "form-control", placeholder = "Enter author") }}
+                        {% if form.author.errors %}
+                        <ul class = "errors">
+                            {% for error in form.author.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.copies(class = "form-control", placeholder = "Enter number of copies") }}
+                        {% if form.copies.errors %}
+                        <ul class = "errors">
+                            {% for error in form.copies.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col">
+                        {{ form.submit(class = "btn btn-primary btn-search") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="/operator/books/add" class="btn btn-primary btn-password"  role="button" aria-pressed="true">Add book</a>
+    <div class="row" id="row2">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Summary</th>
+                        <th scope="col">Keywords</th>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.ISBN }} </td>
+                    <td> {{ row.title }} </td>
+                    <td> {{ row.number_pages }} </td>
+                    <td> {{ row.language }} </td>
+                    <td> {{ row.summary }} </td>
+                    <td> {{ row.keywords }} </td>
+                    <td> {{ row.category }} </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

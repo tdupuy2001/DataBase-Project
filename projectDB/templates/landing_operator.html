@@ -1,0 +1,35 @@
+{% extends "global_layout_operator.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped" id="row3">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN </th>
+                        <th scope="col">User id </th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Delayed days</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.ISBN }} </td>
+                    <td> {{ row.id_user }} </td>
+                    <td> {{ row.first_name }} </td>
+                    <td> {{ row.last_name }} </td>
+                    <td> {{ row.delayed_days }} </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+        <div class="row">
+            <div class="mx-auto col-10 col-md-8 col-lg-6">
+                <form class="form-vertical" name="signup-form" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group ">
+                        {{ form.first_name.label(class = "form-label") }}
+                        {{ form.first_name(class = "form-control", placeholder = "Enter first name")}}
+                        {% if form.first_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.first_name.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.last_name.label(class = "form-label") }}
+                        {{ form.last_name(class = "form-control", placeholder = "Enter last name")}}
+                        {% if form.last_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.last_name.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.birth_date.label(class = "form-label") }}
+                        {{ form.birth_date(class = "form-control", placeholder = "Enter birth date")}}
+                        {% if form.birth_date.errors %}
+                        <ul class = "errors">
+                            {% for error in form.birth_date.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.email.label(class = "form-label") }}
+                        {{ form.email(class = "form-control", placeholder = "Enter email")}}
+                        {% if form.email.errors %}
+                        <ul class = "errors">
+                            {% for error in form.email.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.username.label(class = "form-label") }}
+                        {{ form.username(class = "form-control", placeholder = "Enter username")}}
+                        {% if form.username.errors %}
+                        <ul class = "errors">
+                            {% for error in form.username.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group ">
+                        {{ form.password.label(class = "form-label") }}
+                        {{ form.password(class = "form-control", placeholder = "Enter password") }}
+                        {% if form.password.errors %}
+                        <ul class = "errors">
+                            {% for error in form.password.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="text-center">
+                        {{ form.submit(class = "btn btn-primary btn-submit-custom") }}
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

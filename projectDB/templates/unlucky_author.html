@@ -1,0 +1,26 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Authors names</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in res %}
+                    <tr>
+                        <td> {{ row.authors_names }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

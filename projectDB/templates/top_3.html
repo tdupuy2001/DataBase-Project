@@ -1,0 +1,28 @@
+{% extends "global_layout_admin.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto ">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Categories</th>
+                        <th scope="col">Borrowing times</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in res %}
+                    <tr>
+                        <td> {{ row.categories }} </td>
+                        <td> {{ row.borrowing_times }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

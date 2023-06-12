@@ -1,0 +1,24 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Number of schools</h4>
+                    <p class="card-text" id="paragraph">There are {{number_schools}} schools registered on our website.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Number of Books</h4>
+                    <p class="card-text" id="paragraph">There are {{number_books}} different books registered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

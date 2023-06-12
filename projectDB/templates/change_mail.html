@@ -1,0 +1,38 @@
+{% extends "global_layout_user.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <form class="form-vertical" name="login-form" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group ">
+                    {{ form.old_mail.label(class = "form-label") }}
+                    {{ form.old_mail(class = "form-control", placeholder = "Enter your old mail")}}
+                    {% if form.old_mail.errors %}
+                    <ul class = "errors">
+                        {% for error in form.old_mail.errors %}
+                        <li class = "text-danger">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group ">
+                    {{ form.new_mail.label(class = "form-label") }}
+                    {{ form.new_mail(class = "form-control", placeholder = "Enter your new mail") }}
+                    {% if form.new_mail.errors %}
+                    <ul class = "errors">
+                        {% for error in form.new_mail.errors %}
+                        <li class = "text-danger">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    {{ form.submit(class = "btn btn-primary btn-submit-custom") }}
+                </div>
+            </form>
+    </div>
+    </div>
+</div>
+{% endblock content %}

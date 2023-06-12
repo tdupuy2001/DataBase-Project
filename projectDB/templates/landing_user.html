@@ -1,0 +1,117 @@
+{% extends "global_layout_user.html" %}
+{% block content %}
+<div class="container" >
+    {% include "flash_messages.html" %}
+    <div class="row" id="row3">
+        <div class="col-md-12">
+            <form class="form-inline" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.title(class = "form-control", placeholder = "Enter title") }}
+                        {% if form.title.errors %}
+                        <ul class = "errors">
+                            {% for error in form.title.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.category(class = "form-control", placeholder = "Enter category") }}
+                        {% if form.category.errors %}
+                        <ul class = "errors">
+                            {% for error in form.category.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        {{ form.author(class = "form-control", placeholder = "Enter author") }}
+                        {% if form.author.errors %}
+                        <ul class = "errors">
+                            {% for error in form.author.errors %}
+                            <li class = "text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col">
+                        {{ form.submit(class = "btn btn-primary btn-search") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="row2">
+        <div class="mx-auto ">
+            <div class="text", id="title_book">
+                {{title}}
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Summary</th>
+                        <th scope="col">Keywords</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in res %}
+                <tr>
+                    <td> {{ row.ISBN }} </td>
+                    <td> {{ row.title }} </td>
+                    <td> {{ row.number_pages }} </td>
+                    <td> {{ row.language }} </td>
+                    <td> {{ row.summary }} </td>
+                    <td> {{ row.keywords }} </td>
+                    <td>
+                        <button style = "all: unset; cursor: pointer;" type = "button" data-bs-toggle = "modal" data-bs-target = "#reserveModal" data-ISBN = "{{ row.ISBN }}" onclick = "setReserveModalFields(this)">
+                            <i class = "fa fa-book" >Reserve</i>
+                        </button>
+                    </td>
+                    <td>
+                        <a href="/see_review/{{row.ISBN}}" class="btn"  role="button" aria-pressed="true">
+                            <i class = "fa fa-search" ></i>
+                        </a> 
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>   
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class = "modal fade" id="reserveModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "reserveModalLabel">Reserve</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                You will reserve/borrow this book. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "reserve-modal-form">
+                    <input type = "submit" class = "btn btn-success" value = "Reserve">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function setReserveModalFields(row) {
+        document.getElementById("reserve-modal-form").action = "/reserve/" + row.getAttribute("data-ISBN");
+        document.getElementById("reserve-modal-form").method = "POST";
+    }
+</script>
+
+{% endblock content %}
