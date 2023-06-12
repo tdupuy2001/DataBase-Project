@@ -19,7 +19,7 @@ Use `pip install <package_name>` to install each individual Python package direc
 
 The package named "`projectDB`" contains the application's code and files, separated into folders for each category (Blueprints, HTML templates - views, static files such as css or images).
 
-This package contains a `__init__.py` file which creates the application, connects the application to the database and imports all the routes. There is also a `routes.py` file where we create the home page (before the connection).
+This package contains a `__init__.py` file which creates the application, connects the application to the database (you have to set up your database information connection here) and imports all the routes. There is also a `routes.py` file where we create the home page (before the connection).
 
 In this package, there are two Blueprints: "`login`" and "`sign-up`", each contains: 
     - an `__init__` file that initializes the Blueprint
@@ -39,19 +39,18 @@ Finally, you can populate the database using the DML file (the data have been cr
 ## Screenshots
 
 Global landing
-![global landing](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/f7efc794-a2b0-4f04-b589-e58cdfd020c2)
+![global landing](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/449d7855-8b34-47f5-ad9d-f6b04fc6bfe0)
 
 
 Landing for teachers and students
-![landing for teachers and students](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/6323f583-82e4-4557-92b4-31962325fb17)
+![landing for teachers and students](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/7d8383d9-4326-4396-985e-915fcce5d47b)
 
 
 Landing for operator
-![landing for operator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/1678ec30-d56f-4cd0-907a-da7141a949b3)
+![landing for operator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/1bb06e98-87a2-4c47-b4b3-af647bae7a61)
 
 
 Landing for administrator
-![landing for administrator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/67600e67-7ccb-4b9d-8d76-4f6686441e25)
-
+![landing for administrator](https://github.com/tdupuy2001/DataBase-Project/assets/136317311/f35d4847-1138-496d-b99f-c35ddd6aafc7)
 
 
