@@ -9,7 +9,7 @@ With the help of [Databases-Python-Demo](https://github.com/mkoniari/DBLAB---Dat
  - [Python](https://www.python.org/downloads/), with the additional libraries:
     - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
     - [Flask-MySQLdb](https://flask-mysqldb.readthedocs.io/en/latest/)
-    - [faker](https://faker.readthedocs.io/en/master/) (for data generation)
+    - [Faker](https://faker.readthedocs.io/en/master/) (for data generation)
     - [Flask-WTForms](https://flask-wtf.readthedocs.io/en/1.0.x/install/), [WTForms-validators](https://pypi.org/project/wtforms-validators/) and [email-validator] (https://pypi.org/project/email-validator/)
 
 Use `pip install <package_name>` to install each individual Python package directly for the entire system or in a virtual environment.
