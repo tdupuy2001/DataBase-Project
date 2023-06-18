@@ -298,7 +298,7 @@ def reserveBook(ISBN):
 
 def seeReviewBook(ISBN): 
     if 'loggedin' in session and (session['role']=='teacher'or session['role']=='student'):  
-        query=f"SELECT grade, comment FROM Review where Books_ISBN='{ISBN}'"
+        query=f"SELECT grade, comment FROM Review where Books_ISBN='{ISBN}'and approved=1"
         try:
             cur = db.connection.cursor()
             cur.execute(query)
